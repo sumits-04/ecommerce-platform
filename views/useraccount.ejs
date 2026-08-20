@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="font-['helvetica_now_display']">
+     <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
+    <% if(loggedin){ %>
+    <nav class="w-full flex bg-blue-200 justify-between px-5 py-3">
+      <img src="/images/logo.png" alt="logo" class="w-36 h-auto">
+        <div class="flex gap-5">
+          <a class=" mt-2 mr-2" href="/shop">Home</a>
+          
+        </div>
+   <% } %>
+    </nav>
+
+    <% if(Update.length>0){ %>
+        <div class="flash-message absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+            <span class="inline-block mt-1 mb-1 text-white">
+                <%= Update %>
+            </span>
+        </div>
+        <% } %>
+
+<form
+    action="/profile-image"
+    method="POST"
+    enctype="multipart/form-data"
+>
+    <div class="mt-7 text-center">
+        <div class="relative w-60 h-60 mx-auto">
+
+    <!-- Profile Image -->
+    <img
+        src="/profile-image"
+        alt="Upload Photo"
+        class="w-60 h-60 rounded-full object-cover"
+    >
+
+    <!-- Buttons -->
+    <div class="absolute bottom-0 left-full ml-3 flex items-center gap-2">
+
+        <label
+            for="profileImage"
+            class="px-3 py-2 bg-blue-500 text-white rounded-md cursor-pointer whitespace-nowrap"
+        >
+            Change Photo
+        </label>
+
+        <input
+            id="profileImage"
+            type="file"
+            name="profileImage"
+            accept="image/*"
+            class="hidden"
+        >
+
+        <button
+            type="submit"
+            class="px-3 py-2 bg-green-500 text-white rounded-md whitespace-nowrap"
+        >
+            Upload
+        </button>
+
+    </div>
+
+</div>
+
+        <div class="flex flex-col items-center justify-center gap-5">
+            <div>
+        <h1 class="mt-2 text-black text-3xl text-bold"><%= user.fullname %></h1>
+        <h1 class="text-black-600 text-xl"><%= user.email %></h1>
+        </div>
+        <a class="text-xl text-blue-500" href="/editprofile">Edit Profile</a>
+        <a class="text-xl text-blue-500" href="/changepassword">Change Password</a>
+        <a class="text-red-600" href="users/logout">Logout</a>
+        </div>
+    </div>
+
+</form>
+ <%- include('./partials/footer') %>
