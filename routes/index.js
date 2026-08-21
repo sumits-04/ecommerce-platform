@@ -9,7 +9,8 @@ const bcrypt = require("bcrypt");
 
 router.get("/", (req, res) => {
   let error = req.flash("error");
-  res.render("index.ejs", { error, loggedin: false });
+  let create = req.flash("create");
+  res.render("index.ejs", { error, loggedin: false, create });
 });
 
 router.get("/shop", isLoggedIn, async (req, res) => {
