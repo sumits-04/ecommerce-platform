@@ -1,14 +1,16 @@
-mongoose = require("mongoose");
-const dbgr = require("debug")("development:mongoose");
-const config = require("config");
+const dns = require("dns");
+
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
+
+const mongoose = require("mongoose");
 
 mongoose
-  .connect(`${config.get("MONGODB_URI")}`)
+  .connect(process.env.MONGODB_URI)
   .then(() => {
-    dbgr("MongoDB Connected");
+    console.log("✅ MongoDB Connected Successfully");
   })
   .catch((err) => {
-    dbgr(err);
+    console.error("❌ MongoDB Connection Error:", err);
   });
 
 module.exports = mongoose.connection;

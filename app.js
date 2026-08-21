@@ -1,4 +1,5 @@
 const express = require("express");
+const PORT = process.env.PORT || 3000;
 const app = express();
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -32,6 +33,6 @@ app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 app.use("/owners", ownersRouter);
 
-app.listen(3000, () => {
+app.listen(PORT , () => {
   console.log("server is running....");
 });
