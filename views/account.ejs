@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+
+
+
+ <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,20 +14,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body class="font-['helvetica_now_display']">
-    <nav class="w-full bg-blue-200 flex justify-between px-5 py-3">
-      <img src="/images/logo.png" alt="logo" class="w-36 h-auto">
+  <body class="font-['helvetica_now_display'] m-0 w-full overflow-x-hidden">
      <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
     <% if(loggedin){ %>
-        <div class="flex gap-5">
-          <a class="mt-2 mr-2" href="/owners/AllProducts">Home</a>
+   <nav class="sticky top-0 z-50 w-full bg-blue-200 flex flex-col sm:flex-row items-center justify-between px-4 sm:px-5 py-3 shadow-md box-border">
+      <img src="/images/logo.png" alt="logo" class="w-28 sm:w-32 md:w-36 h-auto">
+         <div class="mt-3 sm:mt-0 mr-0 sm:mr-2 flex flex-wrap justify-center items-center gap-3 sm:gap-5">
+          <a class="text-sm sm:text-base" href="/owners/AllProducts">Home</a>
           
         </div>
    <% } %>
     </nav>
 
     <% if(Update.length>0){ %>
-        <div class="flash-message absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+        <div class="flash-message fixed top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-blue-500 z-[100]">
             <span class="inline-block mt-1 mb-1 text-white">
                 <%= Update %>
             </span>
@@ -36,19 +39,21 @@
     method="POST"
     enctype="multipart/form-data"
 >
-    <div class="text-center">
-        <div class="relative w-60 h-60 mx-auto">
+    <div class="mt-7 text-center">
+       <div class="relative w-60 h-60 mx-auto mb-24 sm:mb-0">
 
     <!-- Profile Image -->
     <img
         src="/owners/profile-image"
-        alt= "Upload Photo"
-        class="w-60 h-60 mt-3 rounded-full object-cover"
+        alt="Upload Photo"
+        class="w-60 h-60 rounded-full object-cover"
     >
 
     <!-- Buttons -->
-    <div class="absolute bottom-0 left-full ml-3 flex items-center gap-2">
-
+    <div
+        class="flex justify-center items-center gap-2 mt-4
+               sm:absolute sm:bottom-0 sm:left-full sm:ml-3 sm:mt-0"
+    >
         <label
             for="profileImage"
             class="px-3 py-2 bg-blue-500 text-white rounded-md cursor-pointer whitespace-nowrap"
@@ -70,15 +75,14 @@
         >
             Upload
         </button>
-
     </div>
 
 </div>
 
-        <div class="flex flex-col items-center justify-center gap-7">
+        <div class="flex flex-col items-center justify-center gap-5">
             <div>
-        <h1 class="mt-4 text-black text-3xl text-bold"><%= owner.fullname %></h1>
-        <h1 class="text-black-600"><%= owner.email %></h1>
+        <h1 class="mt-2 text-black text-3xl text-bold"><%= owner.fullname %></h1>
+        <h1 class="text-black-600 text-xl"><%= owner.email %></h1>
         </div>
         <a class="text-xl text-blue-500" href="/owners/editprofile">Edit Profile</a>
         <a class="text-xl text-blue-500" href="/owners/changepassword">Change Password</a>
@@ -88,3 +92,7 @@
 
 </form>
  <%- include('./partials/footer') %>
+
+
+
+ 

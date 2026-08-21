@@ -198,7 +198,7 @@ router.post("/account/change-password", isLoggedIn, async (req, res) => {
         await user.save();
 
         req.flash("Update", "Password changed successfully");
-        res.redirect("/account");
+        return res.redirect("/account");
 
     } catch (error) {
         console.log(error);

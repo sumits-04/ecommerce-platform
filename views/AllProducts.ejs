@@ -14,17 +14,17 @@
   <body class="font-['helvetica_now_display']">
     <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
     <% if(loggedin){ %>
-    <nav class="w-full bg-blue-200 flex justify-between px-5 py-3">
-      <img src="/images/logo.png" alt="logo" class=" w-36 h-auto">
-        <div class="mt-2 mr-2 flex gap-5">
-          <a href="/owners/account">My Account</a>
-          <a class="text-red-600" href="/owners/logout">Logout</a>
+    <nav class="sticky top-0 z-50 w-full bg-blue-200 flex flex-col sm:flex-row items-center justify-between px-4 sm:px-5 py-3 shadow-md">
+      <img src="/images/logo.png" alt="logo" class="w-28 sm:w-32 md:w-36 h-auto">
+         <div class="mt-3 sm:mt-0 mr-0 sm:mr-2 flex flex-wrap justify-center items-center gap-3 sm:gap-5">
+          <a class="text-sm sm:text-base" href="/owners/account">My Account</a>
+          <a class="text-sm sm:text-base text-red-600" href="/owners/logout">Logout</a>
         </div>
     </nav>
     <% } %>
 
         <% if(Delete.length>0){ %>
-        <div class="flash-message absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+        <div class="flash-message fixed top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-blue-500 z-[100]">
             <span class="inline-block mt-1 mb-1 text-white">
                 <%= Delete %>
             </span>
@@ -32,7 +32,7 @@
         <% } %>
 
         <% if(edit.length>0){ %>
-        <div class="flash-message absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+        <div class="flash-message fixed top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-blue-500 z-[100]">
             <span class="inline-block mt-1 mb-1 text-white">
                 <%= edit %>
             </span>
@@ -40,19 +40,19 @@
         <% } %>
 
       <div class="min-h-screen flex flex-col">
-                <div class="container px-10 py-20 flex flex-grow">
-                    <div class="w-[25%] flex h-screen flex-col items-start">
-                        <div class="flex flex-col">
+                <div class="w-full px-4 sm:px-6 md:px-10 py-10 sm:py-16 flex flex-col lg:flex-row gap-6">
+                   <div class="w-full lg:w-1/4 flex flex-col items-start">
+                        <div class="flex flex-row lg:flex-col flex-wrap gap-4 lg:gap-0">
                             <a class="block w-fit mb-2" href="/owners/AllProducts">All Products</a>
                             <a class="block w-fit mb-2" href="/owners/createproducts">Create new product</a>
                         </div>
                     </div>
-                    <main class="w-3/4 bg-white p-8 shadow ml-4">
-                        <div class="flex  flex-wrap flex-row items-start gap-5">
+                    <main class="w-full lg:w-3/4 bg-white p-4 sm:p-6 md:p-8 shadow">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <% products.forEach(function(product){ %>
-                    <div class="w-60">
+                    <div class="w-full min-w-0">
                         <div class="w-full h-52 flex items-center justify-center bg-[<%= product.bgcolor %>]">
-                            <img class="h-[12rem]" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
+                            <img class="h-40 sm:h-44 md:h-48 max-w-full object-contain" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
                                 alt="">
                         </div>
                         <div

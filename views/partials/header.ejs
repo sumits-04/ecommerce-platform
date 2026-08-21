@@ -12,15 +12,15 @@
   </head>
 
   <body class="font-['helvetica_now_display']">
-    <nav class="w-full bg-blue-200 flex justify-between px-5 py-3">
-      <img src="/images/logo.png" alt="logo" class="w-36 h-auto">
+    <nav class="sticky top-0 z-50 w-full bg-blue-200 flex flex-col sm:flex-row items-center justify-between px-4 sm:px-5 py-3 shadow-md">
+      <img src="/images/logo.png" alt="logo" class="w-28 sm:w-32 md:w-36 h-auto">
     <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
     <% if(loggedin){ %>
-        <div class="mt-2 mr-2 flex gap-5">
-          <a href="/shop">Shop</a>
-          <a href="/cart">Cart</a>
-          <a href="/account">My Account</a>
-          <a class="text-red-600" href="/users/logout">Logout</a>
+        <div class="mt-3 sm:mt-0 mr-0 sm:mr-2 flex flex-wrap justify-center items-center gap-3 sm:gap-5">
+          <a class="text-sm sm:text-base" href="/shop">Shop</a>
+          <a class="text-sm sm:text-base" href="/cart">Cart</a>
+          <a class="text-sm sm:text-base" href="/account">My Account</a>
+          <a class="text-sm sm:text-base text-red-600" href="/users/logout">Logout</a>
         </div>
         <% } %>
         </nav>
