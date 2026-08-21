@@ -207,10 +207,10 @@ router.post("/account/change-password", isLoggedIn, async (req, res) => {
     }
 });
 
-router.post("/editprofile/:id", isLoggedIn, async (req,res)=>{
- await userModel.findByIdAndUpdate(req.params.id, req.body);
- req.flash("Update","Update Successfull");
- return res.redirect("/account");
-})
+router.post("/editprofile", isLoggedIn, async (req, res) => {
+  await userModel.findByIdAndUpdate(req.user._id, req.body);
+  req.flash("Update", "Update Successful");
+  res.redirect("/account");
+});
 
 module.exports = router;

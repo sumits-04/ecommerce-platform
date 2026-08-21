@@ -8,15 +8,24 @@ module.exports = async (req, res, next) => {
   }
 
   try {
-    let decode = jwt.verify(req.cookies.token, process.env.JWT_KEY);
-    let user = await userModel
-      .findOne({ email: decode.email })
+    const decode = jwt.verify(req.cookies.token, process.env.JWT_KEY);
+
+    const user = await userModel
+      .findById(decode.id)
       .select("-password");
+
+    if (!user) {
+      res.clearCookie("token");
+      req.flash("error", "User not found. Please login again");
+      return res.redirect("/");
+    }
 
     req.user = user;
     next();
+
   } catch (err) {
+    console.log(err);
     req.flash("error", "something went wrong");
-    res.redirect("/");
+    return res.redirect("/");
   }
 };
