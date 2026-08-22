@@ -11,10 +11,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body class="font-['helvetica_now_display']">
+  <body class="font-['helvetica_now_display'] m-0 w-full overflow-x-hidden">
      <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
     <% if(loggedin){ %>
-   <nav class="sticky top-0 z-50 w-full bg-blue-200 flex flex-col sm:flex-row items-center justify-between px-4 sm:px-5 py-3 shadow-md">
+  <nav class="sticky top-0 z-50 w-full bg-blue-200 flex flex-col sm:flex-row items-center justify-between px-4 sm:px-5 py-3 shadow-md box-border">
       <img src="/images/logo.png" alt="logo" class="w-28 sm:w-32 md:w-36 h-auto">
          <div class="mt-3 sm:mt-0 mr-0 sm:mr-2 flex flex-wrap justify-center items-center gap-3 sm:gap-5">
           <a class="text-sm sm:text-base" href="/shop">Home</a>
@@ -41,14 +41,15 @@
         <div class="relative w-60 h-60 mx-auto">
 
     <!-- Profile Image -->
-    <img
-        src="/profile-image"
-        alt="Upload Photo"
-        class="w-60 h-60 rounded-full object-cover"
-    >
+    <div class="relative w-60 h-60 mx-auto mb-24 sm:mb-0">
 
-    <!-- Buttons -->
-    <div class="absolute bottom-0 left-full ml-3 flex items-center gap-2">
+<img
+    src="/profile-image"
+    alt="Upload Photo"
+    class="w-60 h-60 rounded-full object-cover">
+
+<div class="flex justify-center items-center gap-2 mt-4
+            sm:absolute sm:bottom-0 sm:left-full sm:ml-3 sm:mt-0">
 
         <label
             for="profileImage"
